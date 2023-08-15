@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* Styles for the popover */
+      .popover-container {
+        position: relative;
+        display: inline-block;
+      }
+      .popover {
+        position: absolute;
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        padding: 10px;
+        width: 200px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="popover-container">
+      <button id="popover-button">Click Me</button>
+      <div id="popover" class="popover">
+        <p>This is the popover content.</p>
+      </div>
+    </div>
+
+    <script>
+      const popoverButton = document.getElementById('popover-button');
+      const popover = document.getElementById('popover');
+      const popoverContainer = document.querySelector('.popover-container');
+
+      popoverButton.addEventListener('click', (event) => {
+        // event.stopPropagation(); // Prevent the click from closing the popover immediately
+        popover.style.display = 'block';
+      });
+
+      // Close popover when clicking anywhere outside
+      document.addEventListener('click', (event) => {
+        if (!popoverContainer.contains(event.target)) {
+          popover.style.display = 'none';
+        }
+      });
+    </script>
+  </body>
+</html>
